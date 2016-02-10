@@ -8,7 +8,7 @@ mod test;
 
 extern crate libc;
 
-use std::ptr;
+use std::{ ptr };
 
 pub const DEFAULT_SIZE: usize = 256;
 
@@ -83,5 +83,15 @@ impl BitSet {
 
     fn capacity(&self) -> usize {
         self.capacity
+    }
+}
+
+impl Drop for BitSet {
+    fn drop(&mut self) {
+        self.capacity = 0;
+
+        unsafe {
+            libc::free(self.data as *mut libc::c_void);
+        }
     }
 }
