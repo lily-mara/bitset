@@ -1,0 +1,8 @@
+[package]
+name = "bitset"
+version = "0.1.0"
+authors = ["Nate Mara <natemara@gmail.com>"]
+
+[dependencies]
+libc = "0.2.6"
+stainless = { git = "https://github.com/reem/stainless.git" }
